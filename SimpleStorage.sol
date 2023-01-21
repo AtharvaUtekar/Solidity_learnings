@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
+// First Contract address deployed on goerli test net network: 0x89801D2d74c1Bb46Bd3F1ce324b2B0688D54Bf2e
+
 contract SimpleStorage{
     // initializing a variable
     uint256  favNumber;
