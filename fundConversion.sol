@@ -6,12 +6,16 @@ pragma solidity ^0.8.6;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract FundMe{
-    uint256 minimumUSD = 50 * 1e18;
+    uint256 minimumUSD = 10 * 1e18;
+
+    address[] public funders;
+    mapping(address => uint256) public addressToAmountFunded;
 
     function fund() public payable{        
         // To able to send the minimum fund amount in USD
         require(getConversionRate(msg.value)>= minimumUSD, "Insufficient funds");    //   1e18  = 1 * 10 ^ 18
-
+        funders.push(msg.sender);
+        addressToAmountFunded[msg.sender] = msg.value;
     }
 
     // function to get ETH price in USD
